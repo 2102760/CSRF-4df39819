@@ -62,6 +62,10 @@ $token = $_SESSION['token'];
     <hr/>
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_POST['token'] !== $_SESSION['token']) {
+            die("Dit mag niet!");
+        }
+
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             die('Doe lief en pas het niet aan!');
         }
